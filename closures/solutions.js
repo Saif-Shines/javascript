@@ -3,7 +3,10 @@ console.log('Hello, world!');
 
 // CHALLENGE 1
 function createFunction() {
-
+  function logsHello() {
+    console.log('hello')
+  }
+  return logsHello;
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -13,8 +16,13 @@ function createFunction() {
 
 // CHALLENGE 2
 function createFunctionPrinter(input) {
-
+  let param = input;
+  function printer() {
+    console.log(param);
+  }
+  return printer;
 }
+
 
 // /*** Uncomment these to check your work! ***/
 // const printSample = createFunctionPrinter('sample');
