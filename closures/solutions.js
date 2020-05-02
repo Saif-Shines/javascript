@@ -104,15 +104,24 @@ console.log(onceFunc(9001));  // => should log 6
 
 // CHALLENGE 5
 function after(count, func) {
-
+  let counter = 1;
+  function resultPrint() {
+    if (counter == count) {
+      func();
+      return;
+    }
+    console.log('nothing');
+    counter++;
+  }
+  return resultPrint;
 }
 
-// /*** Uncomment these to check your work! ***/
-// const called = function() { console.log('hello') };
-// const afterCalled = after(3, called);
-// afterCalled(); // => nothing is printed
-// afterCalled(); // => nothing is printed
-// afterCalled(); // => 'hello' is printed
+/*** Uncomment these to check your work! ***/
+const called = function () { console.log('hello') };
+const afterCalled = after(3, called);
+afterCalled(); // => nothing is printed
+afterCalled(); // => nothing is printed
+afterCalled(); // => 'hello' is printed
 
 
 // CHALLENGE 6
