@@ -76,15 +76,30 @@ function addByX(x) {
 
 
 // CHALLENGE 4
-function once(func) {
-
+function addBy2(a) {
+  return a + 2;
 }
 
-// /*** Uncomment these to check your work! ***/
-// const onceFunc = once(addByTwo);
-// console.log(onceFunc(4));  // => should log 6
-// console.log(onceFunc(10));  // => should log 6
-// console.log(onceFunc(9001));  // => should log 6
+function once(func) {
+  let counter = 0;
+  let res = func(0);
+  function resultFunc(a) {
+    if (counter == 0) {
+      counter++;
+      res = func(a);
+      return func(a);
+    }
+    return res;
+  }
+  return resultFunc;
+}
+
+/*** Uncomment these to check your work! ***/
+const onceFunc = once(addBy2);
+// console.log(`addBy2: ${addBy2(2)}`)
+console.log(onceFunc(4));  // => should log 6
+console.log(onceFunc(10));  // => should log 6
+console.log(onceFunc(9001));  // => should log 6
 
 
 // CHALLENGE 5
