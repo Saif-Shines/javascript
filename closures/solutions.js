@@ -217,13 +217,21 @@ console.log(subFrom20(5)); // => should log 15
 
 // CHALLENGE 11
 function dateStamp(func) {
+  let resultObj = {};
+  let funcResult = func;
+  function retrnfn(val) {
+    resultObj['date'] = Date().toString();
+    resultObj['output'] = func(val);
+    return resultObj;
+  }
+  return retrnfn;
 
 }
 
-// /*** Uncomment these to check your work! ***/
-// const stampedMultBy2 = dateStamp(n => n * 2);
-// console.log(stampedMultBy2(4)); // => should log { date: (today's date), output: 8 }
-// console.log(stampedMultBy2(6)); // => should log { date: (today's date), output: 12 }
+/*** Uncomment these to check your work! ***/
+const stampedMultBy2 = dateStamp(n => n * 2);
+console.log(stampedMultBy2(4)); // => should log { date: (today's date), output: 8 }
+console.log(stampedMultBy2(6)); // => should log { date: (today's date), output: 12 }
 
 
 // CHALLENGE 12
