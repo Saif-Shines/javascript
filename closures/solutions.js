@@ -306,16 +306,34 @@ console.log(play()); // => should log 'reload to play again'
 console.log(play()); // => should log 'reload to play again'
 
 // CHALLENGE 16
-function average() {}
+function average() {
+  let count = 1;
+  let sum = 0;
+  let avg;
+  function soFarAvg(arg) {
+    if (arg == undefined) {
+      if (count == 1) {
+        count = 0;
+        return 0;
+      }
+      return sum / count;
+    }
+    count++;
+    sum = arg + sum;
+    avg = sum / count;
+    return avg;
+  }
+  return soFarAvg;
+}
 
-// /*** Uncomment these to check your work! ***/
-// const avgSoFar = average();
-// console.log(avgSoFar()); // => should log 0
-// console.log(avgSoFar(4)); // => should log 4
-// console.log(avgSoFar(8)); // => should log 6
-// console.log(avgSoFar()); // => should log 6
-// console.log(avgSoFar(12)); // => should log 8
-// console.log(avgSoFar()); // => should log 8
+/*** Uncomment these to check your work! ***/
+const avgSoFar = average();
+console.log(avgSoFar()); // => should log 0
+console.log(avgSoFar(4)); // => should log 4
+console.log(avgSoFar(8)); // => should log 6
+console.log(avgSoFar()); // => should log 6
+console.log(avgSoFar(12)); // => should log 8
+console.log(avgSoFar()); // => should log 8
 
 // CHALLENGE 17
 function makeFuncTester(arrOfTests) {}
