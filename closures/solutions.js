@@ -262,15 +262,23 @@ console.log(obj.setSecret(2))
 console.log(obj.getSecret()) // => returns 2
 
 // CHALLENGE 14
-function callTimes() {}
+function callTimes() {
+  let count = 0;
+  function called() {
+    count++;
+    console.log(count);
+  }
+  return called;
+}
 
-// /*** Uncomment these to check your work! ***/
-// let myNewFunc1 = callTimes();
-// let myNewFunc2 = callTimes();
-// myNewFunc1(); // => 1
-// myNewFunc1(); // => 2
-// myNewFunc2(); // => 1
-// myNewFunc2(); // => 2
+/*** Uncomment these to check your work! ***/
+let myNewFunc1 = callTimes();
+let myNewFunc2 = callTimes();
+
+myNewFunc1(); // => 1
+myNewFunc1(); // => 2
+myNewFunc2(); // => 1
+myNewFunc2(); // => 2
 
 // CHALLENGE 15
 function russianRoulette(num) {}
