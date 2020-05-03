@@ -179,17 +179,27 @@ console.log(multBy2AndLog('boo')); // => should log { 2: 4, 9: 18 }
 
 // CHALLENGE 9
 function cycleIterator(array) {
+  let count = -1;
+  let limit = array;
+  function returner() {
+    if (count == array.length - 1) {
+      count = 0;
+      return array[count];
+    }
+    count++;
+    return array[count];
+  }
+  return returner;
 
 }
 
-// /*** Uncomment these to check your work! ***/
-// const threeDayWeekend = ['Fri', 'Sat', 'Sun'];
-// const getDay = cycleIterator(threeDayWeekend);
-// console.log(getDay()); // => should log 'Fri'
-// console.log(getDay()); // => should log 'Sat'
-// console.log(getDay()); // => should log 'Sun'
-// console.log(getDay()); // => should log 'Fri'
-
+/*** Uncomment these to check your work! ***/
+const threeDayWeekend = ['Fri', 'Sat', 'Sun'];
+const getDay = cycleIterator(threeDayWeekend);
+console.log(getDay()); // => should log 'Fri'
+console.log(getDay()); // => should log 'Sat'
+console.log(getDay()); // => should log 'Sun'
+console.log(getDay()); // => should log 'Fri'
 
 // CHALLENGE 10
 function defineFirstArg(func, arg) {
