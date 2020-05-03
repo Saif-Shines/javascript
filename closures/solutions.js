@@ -132,15 +132,26 @@ function delay(func, wait) {
 
 // CHALLENGE 7
 function rollCall(names) {
-
+  let arrayOfNames = names;
+  let count = 0;
+  function caller() {
+    if (count < arrayOfNames.length) {
+      console.log(arrayOfNames[count]);
+      count++;
+    } else {
+      console.log(`Everyone accounted for`);
+    }
+  }
+  return caller;
 }
 
-// /*** Uncomment these to check your work! ***/
-// const rollCaller = rollCall(['Victoria', 'Juan', 'Ruth'])
-// rollCaller() // => should log 'Victoria'
-// rollCaller() // => should log 'Juan'
-// rollCaller() // => should log 'Ruth'
-// rollCaller() // => should log 'Everyone accounted for'
+/*** Uncomment these to check your work! ***/
+const rollCaller = rollCall(['Victoria', 'Juan', 'Ruth'])
+// console.log(`rollCall[names]: ${rollCall['Victoria','Juan','Ruth']}`)
+rollCaller() // => should log 'Victoria'
+rollCaller() // => should log 'Juan'
+rollCaller() // => should log 'Ruth'
+rollCaller() // => should log 'Everyone accounted for'
 
 
 // CHALLENGE 8
