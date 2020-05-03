@@ -236,14 +236,26 @@ console.log(stampedMultBy2(6)); // => should log { date: (today's date), output:
 
 // CHALLENGE 12
 function censor() {
-
+  let p;
+  let obj = {};
+  function scene(arg1, arg2) {
+    if (arguments.length == 1) {
+      p = arguments[0];
+      for (let key in obj) {
+        p = p.replace(key, obj[key]);
+      }
+      return p;
+    }
+    obj[arg1] = arg2;
+  }
+  return scene;
 }
 
-// /*** Uncomment these to check your work! ***/
-// const changeScene = censor();
-// changeScene('dogs', 'cats');
-// changeScene('quick', 'slow');
-// console.log(changeScene('The quick, brown fox jumps over the lazy dogs.')); // => should log 'The slow, brown fox jumps over the lazy cats.'
+/*** Uncomment these to check your work! ***/
+const changeScene = censor();
+changeScene('dogs', 'cats');
+changeScene('quick', 'slow');
+console.log(changeScene('The quick, brown fox jumps over the lazy dogs.')); // => should log 'The slow, brown fox jumps over the lazy cats.'
 
 
 // CHALLENGE 13
