@@ -394,7 +394,33 @@ console.log(myActions("undo")); // => should log 'code undone'
 console.log(myActions("undo")); // => should log 'nothing to undo'
 
 // CHALLENGE 19
-function blackjack(array) {}
+function blackjack(array) {
+  let index = 0;
+  return function dealer(num1, num2) {
+    let hasLostGame = false;
+    let currentSum = 0;
+    return function player() {
+      if (hasLostGame) {
+        return `Your are done!`;
+      }
+
+      if (currentSum == 0) {
+        currentSum = num1 + num2;
+        return currentSum;
+      }
+
+      currentSum += array[index++];
+
+      if (currentSum > 21) {
+        hasLostGame = true;
+        return `bust`;
+      }
+
+      return currentSum;
+    };
+  };
+}
+
 
 // /*** Uncomment these to check your work! ***/
 
