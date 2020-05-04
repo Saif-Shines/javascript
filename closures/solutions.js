@@ -249,17 +249,21 @@ console.log(changeScene("The quick, brown fox jumps over the lazy dogs.")); // =
 function createSecretHolder(secret) {
   let srt = secret;
   return {
-    getSecret: () => { return srt; },
-    setSecret: (x) => { srt = x; }
-  }
+    getSecret: () => {
+      return srt;
+    },
+    setSecret: (x) => {
+      srt = x;
+    },
+  };
 }
 
 /*** Uncomment these to check your work! ***/
-obj = createSecretHolder(5)
+obj = createSecretHolder(5);
 
-console.log(obj.getSecret()) // => returns 5
-console.log(obj.setSecret(2))
-console.log(obj.getSecret()) // => returns 2
+console.log(obj.getSecret()); // => returns 5
+console.log(obj.setSecret(2));
+console.log(obj.getSecret()); // => returns 2
 
 // CHALLENGE 14
 function callTimes() {
@@ -287,11 +291,11 @@ function russianRoulette(num) {
   function playGame() {
     count++;
     if (count < num) {
-      return 'click'
+      return "click";
     } else if (count == num) {
-      return 'bang'
+      return "bang";
     } else {
-      return 'reload to play again'
+      return "reload to play again";
     }
   }
   return playGame;
@@ -336,32 +340,58 @@ console.log(avgSoFar(12)); // => should log 8
 console.log(avgSoFar()); // => should log 8
 
 // CHALLENGE 17
-function makeFuncTester(arrOfTests) {}
+function makeFuncTester(arrOfTests) {
+  function funcTest(callback) {
+    for (let arr of arrOfTests) {
+      if (callback(arr[0]) != arr[1]) {
+        return false;
+      }
+      return true;
+    }
+  }
+  return funcTest;
+}
 
-// /*** Uncomment these to check your work! ***/
-// const capLastTestCases = [];
-// capLastTestCases.push(['hello', 'hellO']);
-// capLastTestCases.push(['goodbye', 'goodbyE']);
-// capLastTestCases.push(['howdy', 'howdY']);
-// const shouldCapitalizeLast = makeFuncTester(capLastTestCases);
-// const capLastAttempt1 = str => str.toUpperCase();
-// const capLastAttempt2 = str => str.slice(0, -1) + str.slice(-1).toUpperCase();
-// console.log(shouldCapitalizeLast(capLastAttempt1)); // => should log false
-// console.log(shouldCapitalizeLast(capLastAttempt2)); // => should log true
+/*** Uncomment these to check your work! ***/
+const capLastTestCases = [];
+capLastTestCases.push(["hello", "hellO"]);
+capLastTestCases.push(["goodbye", "goodbyE"]);
+capLastTestCases.push(["howdy", "howdY"]);
+const shouldCapitalizeLast = makeFuncTester(capLastTestCases);
+const capLastAttempt1 = (str) => str.toUpperCase();
+const capLastAttempt2 = (str) => str.slice(0, -1) + str.slice(-1).toUpperCase();
+console.log(shouldCapitalizeLast(capLastAttempt1)); // => should log false
+console.log(shouldCapitalizeLast(capLastAttempt2)); // => should log true
 
 // CHALLENGE 18
-function makeHistory(limit) {}
+function makeHistory(limit) {
+  let count = -1;
+  let strStack = [];
+  function printHistory(str) {
+    if (str == "undo") {
+      count--;
+      if (count == -1) {
+        return `Nothing to undo`;
+      }
+      return `${strStack.pop()} undone`;
+    }
+    strStack.push(str);
+    count++;
+    return `${strStack[count]} done`;
+  }
+  return printHistory;
+}
 
-// /*** Uncomment these to check your work! ***/
-// const myActions = makeHistory(2);
-// console.log(myActions('jump')); // => should log 'jump done'
-// console.log(myActions('undo')); // => should log 'jump undone'
-// console.log(myActions('walk')); // => should log 'walk done'
-// console.log(myActions('code')); // => should log 'code done'
-// console.log(myActions('pose')); // => should log 'pose done'
-// console.log(myActions('undo')); // => should log 'pose undone'
-// console.log(myActions('undo')); // => should log 'code undone'
-// console.log(myActions('undo')); // => should log 'nothing to undo'
+/*** Uncomment these to check your work! ***/
+const myActions = makeHistory(2);
+console.log(myActions("jump")); // => should log 'jump done'
+console.log(myActions("undo")); // => should log 'jump undone'
+console.log(myActions("walk")); // => should log 'walk done'
+console.log(myActions("code")); // => should log 'code done'
+console.log(myActions("pose")); // => should log 'pose done'
+console.log(myActions("undo")); // => should log 'pose undone'
+console.log(myActions("undo")); // => should log 'code undone'
+console.log(myActions("undo")); // => should log 'nothing to undo'
 
 // CHALLENGE 19
 function blackjack(array) {}
