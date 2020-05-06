@@ -1,21 +1,20 @@
 /* CHALLENGE 1 */
 function sayHowdy() {
-  console.log('Howdy');
+  console.log("Howdy");
 }
 
 function testMe() {
   setTimeout(sayHowdy, 0);
-  console.log('Partnah');
+  console.log("Partnah");
 }
 // After thinking it through, uncomment the following line to check your guess!
 testMe(); // what order should these log out? Howdy or Partnah first?
-
 
 /* CHALLENGE 2 */
 
 /* CHALLENGE 2 */
 function logWelcome() {
-  console.log('welcome');
+  console.log("welcome");
 }
 
 function delayedGreet() {
@@ -24,22 +23,21 @@ function delayedGreet() {
 // Uncomment the following line to check your work!
 delayedGreet(); // should log (after 3 seconds): welcome
 
-
 /* CHALLENGE 3 */
 function goodbye() {
-  console.log('helloGoodbye');
+  console.log("helloGoodbye");
 }
 
 function helloGoodbye() {
   setTimeout(goodbye, 2000);
-  console.log('hello');
+  console.log("hello");
 }
 // Uncomment the following line to check your work!
 helloGoodbye(); // should log: hello // should also log (after 3 seconds): good bye
 /* CHALLENGE 4 */
 
 function logeverysecond() {
-  console.log('hi again');
+  console.log("hi again");
 }
 
 function brokenRecord() {
@@ -51,29 +49,31 @@ brokenRecord(); // should log (every second): hi again
 /* CHALLENGE 5 */
 
 function limitedRepeat() {
-  const everySec = setInterval(() => { console.log('hi for now') }, 1000);
-  setTimeout(() => { clearInterval(everySec) }, 5000);
+  const everySec = setInterval(() => {
+    console.log("hi for now");
+  }, 1000);
+  setTimeout(() => {
+    clearInterval(everySec);
+  }, 5000);
 }
 // Uncomment the following line to check your work!
 limitedRepeat();
 
 /* CHALLENGE 6 */
 
-function everyXsecsForYsecs() {
-  // ADD CODE HERE
+function everyXsecsForYsecs(func, interval, duration) {
+  const stopper = setInterval(func, interval);
+  setTimeout(() => clearInterval(stopper), duration);
 }
 // Uncomment the following lines to check your work!
-// function theEnd() {
-//   console.log('This is the end!');
-// }
-// everyXsecsForYsecs(theEnd, 2, 20); // should invoke theEnd function every 2 seconds, for 20 seconds): This is the end!
-
+function theEnd() {
+  console.log("This is the end!");
+}
+everyXsecsForYsecs(theEnd, 2000, 20000); // should invoke theEnd function every 2 seconds, for 20 seconds): This is the end!
 
 /* CHALLENGE 7 */
 
-function delayCounter(target, wait) {
-
-}
+function delayCounter(target, wait) {}
 
 // UNCOMMENT THESE TO TEST YOUR WORK!
 // const countLogger = delayCounter(3, 1000)
