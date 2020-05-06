@@ -4,3 +4,6 @@ Note: We recommend that after you complete a challenge, you re-comment out the t
 ## Challenge 1
 Thinking point (no writing code necessary for this challenge): Inspect the code given to you in Challenge
 1. In what order should the console logs come out? Howdy first or Partnah first?
+
+## Challenge 2
+Create a function delayedGreet that console logs welcome after 3 seconds.
