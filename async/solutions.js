@@ -114,19 +114,28 @@ createPromise.then((val) => console.log(val));
 
 class SecondClock {
   constructor(cb) {
-    // ADD CODE HERE
+    this.cb = cb;
+    this.IntervalId;
+    this.tick = 1;
   }
-  // ADD METHODS HERE
+
+  start(tick) {
+    this.IntervalId = setInterval(() => { this.cb(this.tick++) }, 1000);
+  }
+
+  reset() {
+    clearInterval(this.IntervalId);
+  }
 }
 
 // UNCOMMENT THESE TO TEST YOUR WORK!
-// const clock = new SecondClock((val) => { console.log(val) });
-// console.log("Started Clock.");
-// clock.start();
-// setTimeout(() => {
-//     clock.reset();
-//     console.log("Stopped Clock after 6 seconds.");
-// }, 6000);
+const clock = new SecondClock((val) => { console.log(val) });
+console.log("Started Clock.");
+clock.start();
+setTimeout(() => {
+  clock.reset();
+  console.log("Stopped Clock after 6 seconds.");
+}, 6000);
 
 /* CHALLENGE 10 */
 
