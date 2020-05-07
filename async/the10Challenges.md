@@ -29,3 +29,8 @@ What do you expect to happen?
 Write a function delayCounter that accepts a number (called 'target') as the first argument and a number of milliseconds (called 'wait') as the second argument, and returns a function.
 
 When the returned function is invoked, it should log to the console all of the numbers between 1 and the target number, spaced apart by 'wait' milliseconds.
+
+## Challenge 8
+Write a function, promised, that takes in a value. This function will return a promise that will resolve after 2 seconds.
+
+Hint: take a look at the Promise object docs on MDN
