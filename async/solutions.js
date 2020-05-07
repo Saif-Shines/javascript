@@ -73,14 +73,26 @@ everyXsecsForYsecs(theEnd, 2000, 20000); // should invoke theEnd function every 
 
 /* CHALLENGE 7 */
 
-function delayCounter(target, wait) {}
+function delayCounter(target, wait) {
+  let intervalId;
+  let counter = 0;
+  return function printer() {
+    if (counter == 0) {
+      counter++;
+      intervalId = setInterval(() => { console.log(printer()) }, wait);
+    } else if (counter == target) {
+      clearInterval(intervalId);
+      return counter;
+    } else {
+      return counter++;
+    }
+  }
+}
 
 // UNCOMMENT THESE TO TEST YOUR WORK!
-// const countLogger = delayCounter(3, 1000)
-// countLogger();
-// After 1 second, log 1
-// After 2 seconds, log 2
-// After 3 seconds, log 3
+
+const countLogger = delayCounter(5, 1000)
+countLogger();
 
 /* CHALLENGE 8 */
 
