@@ -140,13 +140,24 @@ setTimeout(() => {
 /* CHALLENGE 10 */
 
 function debounce(callback, interval) {
-  // ADD CODE HERE
+  let recentlyCalled = false;
+  let intervalId;
+  return () => {
+    const result = recentlyCalled ? undefined : callback();
+    recentlyCalled = true;
+    clearInterval(intervalId);
+    intervalId = setTimeout(() => {
+      recentlyCalled = false;
+    }, interval)
+    return result;
+  }
 }
 
 // UNCOMMENT THESE TO TEST YOUR WORK!
-// function giveHi() { return 'hi'; }
-// const giveHiSometimes = debounce(giveHi, 3000);
-// console.log(giveHiSometimes()); // -> 'hi'
-// setTimeout(function() { console.log(giveHiSometimes()); }, 2000); // -> undefined
-// setTimeout(function() { console.log(giveHiSometimes()); }, 4000); // -> undefined
-// setTimeout(function() { console.log(giveHiSometimes()); }, 8000); // -> 'hi'
+function giveHi() { return 'hi'; }
+const giveHiSometimes = debounce(giveHi, 3000);
+
+console.log(giveHiSometimes()); // -> 'hi'
+setTimeout(function () { console.log(giveHiSometimes()); }, 2000); // -> undefined
+setTimeout(function () { console.log(giveHiSometimes()); }, 4000); // -> undefined
+setTimeout(function () { console.log(giveHiSometimes()); }, 8000); // -> 'hi'
