@@ -10,4 +10,6 @@ const newImage = document.createElement('img');
 newImage.setAttribute('src', xxx);
 thumbBar.appendChild(newImage);
 
+for()
+
 /* Wiring up the Darken/Lighten button */
