@@ -13,3 +13,15 @@ and these files are excutable given these permissions on MacOS
 ```sh
 chmod +x filename.js
 ```
+
+## so doing this would run the file in terminal
+```sh
+$ ./scheduleMeeting.js
+false
+false
+true
+true
+false
+false
+false
+```
