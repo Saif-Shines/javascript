@@ -1,7 +1,5 @@
 #! /usr/bin/env node
 
-const { get } = require('http');
-
 const dayStart = '07:30';
 const dayEnd = '17:45';
 
@@ -14,19 +12,30 @@ function getTimeTuple(time) {
 }
 
 function scheduleMeeting(startTime, durationMinutes) {
-  const [meetingStartHH, meetingEndMM] = meetingTimeTuple(startTime, durationMinutes);
-  console.log(meetingStartHH, meetingEndMM);
+  const [dayStartHH, dayStartMM] = getTimeTuple(dayStart);
+  const [dayEndHH, dayEndMM] = getTimeTuple(dayEnd);
+  const [meetingStartHH, meetingStartMM] = getTimeTuple(startTime);
+  const [meetingEndHH, meetingEndMM] = meetingTimeTuple(startTime, durationMinutes);
+
+  if (dayStartHH <= meetingEndHH && meetingEndHH <= dayEndHH) {
+    if (dayStartMM <= meetingStartMM && meetingEndMM <= dayEndMM) return console.log('true');
+    return console.log('false');
+  }
+  return console.log('false');
 }
 
 function meetingTimeTuple(startTime, durationMinutes) {
-  var [meetingStartHH, meetingEndMM] = getTimeTuple(startTime);
+  var [meetingEndHH, meetingEndMM] = getTimeTuple(startTime);
   if (meetingEndMM + durationMinutes >= 60) {
-    meetingStartHH++;
+    meetingEndHH++;
     meetingEndMM = 60 - meetingEndMM;
+  } else {
+    meetingEndMM = meetingEndMM + durationMinutes;
   }
-  return [meetingStartHH, meetingEndMM];
+  return [meetingEndHH, meetingEndMM];
 }
 
+/** Test Cases */
 scheduleMeeting('7:00', 15); // false
 scheduleMeeting('07:15', 30); // false
 scheduleMeeting('7:30', 30); // true
