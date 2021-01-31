@@ -8,6 +8,7 @@ The basic behavior of a single reel is defined in the reel object below. But the
 
 A reel only knows how to display() its current slot symbol, but a slot machine typically shows three symbols per reel: the current slot (position), one slot above (position - 1), and one slot below (position + 1). So displaying the slot machine should end up displaying a 3 x 3 grid of slot symbols.
 */
+
 function randMax(max) {
   return Math.trunc(1e9 * Math.random()) % max;
 }
@@ -29,20 +30,18 @@ var reel = {
 };
 
 var slotMachine = {
-  reels: [
-    // this slot machine needs 3 separate reels
-    // hint: Object.create(..)
-  ],
+  reels: [Object.create(reel), Object.create(reel), Object.create(reel)],
   spin() {
     this.reels.forEach(function spinReel(reel) {
       reel.spin();
     });
   },
   display() {
-    // TODO
+    this.reels.forEach(function displayReel(reel) {
+      console.log(`${reel.display()} | ${reel.display()} | ${reel.display()} `);
+    });
   }
 };
-
 slotMachine.spin();
 slotMachine.display();
 // ☾ | ☀ | ★
