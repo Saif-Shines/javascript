@@ -7,33 +7,34 @@
  that argument.
  */
 
-
-
 function range(start, end) {
-	let range = [];
-	if (start && end) return printRange(start, end);
+  if ((start && end) || end == 0) {
+    let result = [];
+    for (i = start; i <= end; i++) {
+      result.push(i);
+    }
+    return result;
+  }
 
-	function printRange(start,end) {
-		for (let i = start; i <= end, i++) {
-			range.push(i);
-		}
-		console.log(range);
-	}
-
-	if (!end) {
-		return printRange(start);
-	}
+  if (arguments[1] === undefined) {
+    return function rangeTill(end) {
+      let result = [];
+      for (i = start; i <= end; i++) {
+        result.push(i);
+      }
+      return result;
+    };
+  }
 }
 
-range(3, 3); // [3]
-range(3, 8); // [3,4,5,6,7,8]
-range(3, 0); // []
+console.log(range(3, 3)); // [3]
+console.log(range(3, 8)); // [3,4,5,6,7,8]
+console.log(range(3, 0)); // []
 
 var start3 = range(3);
 var start4 = range(4);
 
-start3(3); // [3]
-start3(8); // [3,4,5,6,7,8]
-start3(0); // []
-
-start4(6); // [4,5,6]
+console.log(start3(3)); // [3]
+console.log(start3(8)); // [3,4,5,6,7,8]
+console.log(start3(0)); // []
+console.log(start4(6)); // [4,5,6]
