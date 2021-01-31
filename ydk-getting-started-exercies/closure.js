@@ -7,8 +7,22 @@
  that argument.
  */
 
+
+
 function range(start, end) {
-  // ..TODO..
+	let range = [];
+	if (start && end) return printRange(start, end);
+
+	function printRange(start,end) {
+		for (let i = start; i <= end, i++) {
+			range.push(i);
+		}
+		console.log(range);
+	}
+
+	if (!end) {
+		return printRange(start);
+	}
 }
 
 range(3, 3); // [3]
