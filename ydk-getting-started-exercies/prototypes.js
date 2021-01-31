@@ -30,7 +30,7 @@ var reel = {
 };
 
 var slotMachine = {
-  reels: [Object.create(reel), Object.create(reel), Object.create(reel)],
+  reels: [Object.create(reel, {position: randMax(100) % this.symbols.length}), Object.create(reel), Object.create(reel)],
   spin() {
     this.reels.forEach(function spinReel(reel) {
       reel.spin();
