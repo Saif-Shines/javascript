@@ -6,7 +6,7 @@ there is a another way which is worth documenting,
 
 each of these files have one line on the top
 ```js
-!# /usr/bin/env node
+#! /usr/bin/env node
 ```
 
 and these files are excutable given these permissions on MacOS
